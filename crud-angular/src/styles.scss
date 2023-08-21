@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+///*** criando nosso tema personalizado
+/// https://m3.material.io/styles/color/the-color-system/key-colors-tones
+/// explore o link quando possivel - vai ser importante para o desenvolvimento do projeto final
+
+@import '@angular/material/theming'; //modificar o tema do angular material
+@include mat-core(); //mixin
+
+//angular material precisa de 3 cores
+$custom-app-primary: mat-palette($mat-blue); //variavel de cor
+$custom-app-secondary: mat-palette($mat-indigo, A200, A400, 700);
+$custom-app-warn: mat-palette($mat-red);
+
+$custom-app-theme: mat-light-theme($custom-app-primary,$custom-app-secondary,$custom-app-warn);
+
+//forçar o material a usar esse tema criado
+@include angular-material-theme($custom-app-theme);
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
