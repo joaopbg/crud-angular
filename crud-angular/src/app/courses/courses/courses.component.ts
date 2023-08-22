@@ -1,3 +1,4 @@
+import { CoursesService } from './../services/courses.service';
 import { Component } from '@angular/core';
 
 import { Course } from '../model/course';
@@ -10,17 +11,19 @@ import { Course } from '../model/course';
 export class CoursesComponent {
 
 
-  courses: Course[] = [
-    {_id: '1', name: 'Angular', category: 'front-end'}
 
-  ];
+  courses: Course[] = [];
   displayedColumns = ['name','category'];
 
 
-  constructor(){
+  //essa chamada tornou-se possivel no contrutor por conta do HttpClientModule - Injectable
+  constructor(private coursesService: CoursesService){
+    this.courses = coursesService.list();
+
   }
 
   ngOninit(): void{
+
 
   }
 
